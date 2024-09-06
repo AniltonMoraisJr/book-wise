@@ -1,31 +1,14 @@
-'use client'
-import { signOut, useSession } from 'next-auth/react'
-import { useRouter } from 'next/router'
-import React, { useEffect } from 'react'
+import { Text } from '@/components/Text'
+import { NextPageWithLayout } from '../_app.page'
+import { DashboardLayout } from '@/components/dashboardLayout'
+import { ReactElement } from 'react'
 
-// import { Container } from './styles';
+const Dashboard: NextPageWithLayout = () => {
+  return <Text as={'h1'}>Inicio</Text>
+}
 
-const Dashboard: React.FC = () => {
-  const session = useSession()
-  const router = useRouter()
-
-  const handleLogout = async () => {
-    await signOut()
-  }
-
-  useEffect(() => {
-    const isSignIn = session.status === 'authenticated'
-
-    if (!isSignIn) {
-      router.push('/')
-    }
-  }, [router, session])
-  return (
-    <>
-      <h2>Dashboard</h2>
-      <button onClick={handleLogout}>Logout</button>
-    </>
-  )
+Dashboard.getLayout = function getLayout(page: ReactElement) {
+  return <DashboardLayout>{page}</DashboardLayout>
 }
 
 export default Dashboard

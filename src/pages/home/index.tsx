@@ -8,6 +8,7 @@ import rocketIcon from '@/components/icons/rocketLaunch.svg'
 import Image from 'next/image'
 import { signIn, useSession } from 'next-auth/react'
 import { useRouter } from 'next/router'
+import { Text } from '@/components/Text'
 
 // import { Container } from './styles';
 
@@ -37,8 +38,10 @@ const Home: React.FC = () => {
       </div>
       <div className="form-container">
         <div className="text-container">
-          <h1>Boas vindas!</h1>
-          <p>Faça seu login ou acesse como visitante.</p>
+          <Text as={'h1'} size={'lg'}>
+            Boas vindas!
+          </Text>
+          <Text size={'md'}>Faça seu login ou acesse como visitante.</Text>
         </div>
         <div className="button-container">
           <ButtonAuthProvider onClick={() => handleSignIn('google')}>
